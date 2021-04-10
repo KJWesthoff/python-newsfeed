@@ -21,14 +21,12 @@ def login():
     if session.get('loggedIn') is None:
         return render_template('login.html')
 
-    return redirect('dashboard')
+    return redirect('/dashboard')
 
 @bp.route('/post/<id>')
 def single(id):
     db = get_db()
     post =  db.query(Post).filter(Post.id == id).one()
-    
-    
 
     return render_template(
         "single-post.html", 
